@@ -4,7 +4,26 @@ set -e
 
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 PLUGIN_DIR="$ZSH_CUSTOM/plugins"
-BUILTIN_PLUGINS=(git z fzf)
+BUILTIN_PLUGINS=(git z fzf thefuck)
+FAILED=()
+
+# Install thefuck if not already installed
+if ! command -v thefuck &>/dev/null; then
+  echo "→ Installing thefuck"
+  if command -v brew &>/dev/null; then
+    if ! brew install thefuck; then
+      echo "⚠ Failed to install thefuck via brew"
+      FAILED+=(thefuck)
+    fi
+  else
+    if ! (sudo apt update && sudo apt install -y python3-dev python3-pip python3-setuptools && pip3 install thefuck --user); then
+      echo "⚠ Failed to install thefuck via pip"
+      FAILED+=(thefuck)
+    fi
+  fi
+else
+  echo "✔ thefuck already installed"
+fi
 
 mkdir -p "$PLUGIN_DIR"
 
@@ -62,14 +81,20 @@ echo ""
 
 printf "plugins=("
 for p in "${BUILTIN_PLUGINS[@]}"; do
+  [[ " ${FAILED[*]} " == *" $p "* ]] && continue
   printf "%s " "$p"
 done
 printf "\n"
 for p in "${INSTALLED[@]}"; do
+  [[ " ${FAILED[*]} " == *" $p "* ]] && continue
   printf "  %s\n" "$p"
 done
 printf ")\n"
 
+if [[ ! " ${FAILED[*]} " == *" thefuck "* ]]; then
+  echo ""
+  echo 'eval $(thefuck --alias redo)'
+fi
+
 echo ""
-echo "⚠ Ensure 'zsh-syntax-highlighting' is the LAST plugin in the list."
 echo "----------------------------------"

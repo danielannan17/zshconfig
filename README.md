@@ -17,6 +17,7 @@ These don't need installing — just add them to `plugins=()` in `.zshrc`.
 - **[git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)** — git aliases and functions
 - **[z](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/z)** — directory jumping based on frecency
 - **[fzf](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf)** — fuzzy finder integration
+- **[thefuck](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/thefuck)** — corrects previous console command. Aliased to `redo`. Quick run with `esc esc` 
 
 ### Custom (installed by setup.sh)
 
