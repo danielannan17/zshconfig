@@ -1,0 +1,32 @@
+diff --git a/lib/utils.zsh b/lib/utils.zsh
+index c2e0c06..f79c679 100644
+--- a/lib/utils.zsh
++++ b/lib/utils.zsh
+@@ -25,6 +25,11 @@ _zsh_ai_escape_json() {
+ _zsh_ai_query() {
+     local query="$1"
+ 
++    # Validate config at query time (API keys may be set after shell init)
++    if ! _zsh_ai_validate_config; then
++        return 1
++    fi
++
+     if [[ "$ZSH_AI_PROVIDER" == "ollama" ]]; then
+         # Check if Ollama is running first
+         if ! _zsh_ai_check_ollama; then
+diff --git a/zsh-ai.plugin.zsh b/zsh-ai.plugin.zsh
+index 2938291..9ac0844 100644
+--- a/zsh-ai.plugin.zsh
++++ b/zsh-ai.plugin.zsh
+@@ -18,7 +18,5 @@ source "${plugin_dir}/lib/providers/mistral.zsh"
+ source "${plugin_dir}/lib/utils.zsh"
+ source "${plugin_dir}/lib/widget.zsh"
+ 
+-# Initialize the plugin
+-if _zsh_ai_validate_config; then
+-    _zsh_ai_init_widget
+-fi
+\ No newline at end of file
++# Initialize the widget unconditionally - API key validation happens at query time
++_zsh_ai_init_widget
+\ No newline at end of file

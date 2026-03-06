@@ -1,0 +1,5 @@
+secrets.local.zsh
+*.local.zsh
+plugins/
+
+.DS_Store
