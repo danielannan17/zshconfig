@@ -5,12 +5,18 @@ source ${ZSH_CUSTOM}/secrets.local.zsh
 alias code="cursor"
 alias neovim="nvim"
 alias vim="nvim"
-alias zshrc="code ~/.zshrc"
-alias zshconfig="code ~/.zshrc"
+alias vi="nvim"
 alias loadzsh="source ~/.zshrc"
 alias python="python3"
 alias pip="pip3"
+alias zshrc="nvim ${ZSH_CUSTOM}"
+alias zshconfig="nvim ${ZSH_CUSTOM}"
+
+# Project specific aliases
 alias claude-sandbox="$projects_dir/claude-container/claude-sandbox.sh"
+alias cst="claude-sandbox"
+alias csb="claude-sandbox build"
+alias c="claude"
 
 # Subtext Openclaw commands
 alias ocl="ssh root@$subtext_openclaw_server_ip"

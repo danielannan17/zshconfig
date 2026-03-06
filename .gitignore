@@ -3,3 +3,5 @@ secrets.local.zsh
 plugins/
 
 .DS_Store
+zshrc
+.zshrc

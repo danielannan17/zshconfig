@@ -74,6 +74,14 @@ if [ -d "$PATCH_DIR" ]; then
   done
 fi
 
+echo "→ Creating link to zshrc in custom directory for easy access"
+ln -s ~/.zshrc ${ZSH_CUSTOM}/zshrc
+if [ ! -f "$ZSH_CUSTOM/secrets.local.zsh" ]; then
+  cp "$ZSH_CUSTOM/secrets.local.zsh.sample" "$ZSH_CUSTOM/secrets.local.zsh"
+  echo "→ Created secrets.local.zsh from sample"
+  echo "  Remember to set your API keys in $ZSH_CUSTOM/secrets.local.zsh"
+fi
+
 echo ""
 echo "----------------------------------"
 echo "Add this to your ~/.zshrc:"
