@@ -28,12 +28,12 @@ fi
 mkdir -p "$PLUGIN_DIR"
 
 PLUGINS=(
-  you-should-use|https://github.com/MichaelAquilina/zsh-you-should-use
-  zsh-ai|https://github.com/matheusml/zsh-ai
-  zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions
-  zsh-completions|https://github.com/zsh-users/zsh-completions
-  zsh-syntax-highlighting|https://github.com/zsh-users/zsh-syntax-highlighting
-  zsh-vi-mode|https://github.com/jeffreytse/zsh-vi-mode
+  "you-should-use|https://github.com/MichaelAquilina/zsh-you-should-use"
+  "zsh-ai|https://github.com/matheusml/zsh-ai"
+  "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions"
+  "zsh-completions|https://github.com/zsh-users/zsh-completions"
+  "zsh-syntax-highlighting|https://github.com/zsh-users/zsh-syntax-highlighting"
+  "zsh-vi-mode|https://github.com/jeffreytse/zsh-vi-mode"
 )
 
 INSTALLED=()

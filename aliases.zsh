@@ -14,9 +14,10 @@ alias zshconfig="nvim ${ZSH_CUSTOM}"
 
 # Project specific aliases
 alias claude-sandbox="$projects_dir/claude-container/claude-sandbox.sh"
-alias cst="claude-sandbox"
+alias cs="claude-sandbox"
 alias csb="claude-sandbox build"
 alias c="claude"
+alias cr="claude --resume"
 
 # Subtext Openclaw commands
 alias ocl="ssh root@$subtext_openclaw_server_ip"
