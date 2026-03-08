@@ -7,6 +7,17 @@ PLUGIN_DIR="$ZSH_CUSTOM/plugins"
 BUILTIN_PLUGINS=(git z fzf thefuck)
 FAILED=()
 
+# Install fzf if not already installed
+if ! command -v fzf &>/dev/null; then
+  echo "→ Installing fzf"
+  if ! (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all); then
+    echo "⚠ Failed to install fzf"
+    FAILED+=(fzf)
+  fi
+else
+  echo "✔ fzf already installed"
+fi
+
 # Install thefuck if not already installed
 if ! command -v thefuck &>/dev/null; then
   echo "→ Installing thefuck"

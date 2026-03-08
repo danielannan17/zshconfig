@@ -1,11 +1,21 @@
 # Oh My Zsh Custom Setup
 
-## Setup
+## Prerequisites
 
-Run `setup.sh` to install custom plugins and apply patches.
+Install [Oh My Zsh](https://ohmyz.sh/) if you haven't already:
 
 ```bash
-./setup.sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+## Setup
+
+Clone this repo to replace the default `custom` folder, then run the setup script:
+
+```bash
+rm -rf ~/.oh-my-zsh/custom
+git clone https://github.com/danielannan17/zshconfig.git ~/.oh-my-zsh/custom
+cd ~/.oh-my-zsh/custom && ./setup.sh
 ```
 
 ## Plugins
@@ -36,3 +46,13 @@ Patches in `patches/` are applied automatically by `setup.sh`.
 One file per plugin, named `<plugin-name>.patch`.
 
 - **[zsh-ai.patch](patches/zsh-ai.patch)** — defers API key validation to query time instead of plugin load time
+## Theme — Slash
+
+The custom theme at `themes/slash.zsh-theme` provides two prompt styles. Copy the one you want into your `.zshrc`:
+
+- **Timestamp prompt** — Prepends `[HH:MM]` to the prompt, green on success, red on failure (e.g. `[07:11] ➜  ~`)
+- **Hostname prompt** — Shows `➜ @hostname directory (git_branch)`, colored green/red based on last command status
+
+## Roadmap
+
+Install **[whai](https://github.com/gael-vanderlee/whai)**  or **[wut](https://github.com/shobrook/wut)** - Would be good for remote instances. Warp doesnt support tmux but will be good for my remotes.
